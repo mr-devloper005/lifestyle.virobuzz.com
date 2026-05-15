@@ -21,14 +21,14 @@ function getLoginConfig(kind: ReturnType<typeof getProductKind>) {
   }
   if (kind === 'editorial') {
     return {
-      shell: 'bg-[#F8F8F8] text-[#333333]',
-      panel: 'border border-[#D8BFD8] bg-white',
-      side: 'border border-[#D8BFD8] bg-[#F8F8F8]',
-      muted: 'text-[#666666]',
-      action: 'bg-[#6A006A] text-white hover:bg-[#8B008B]',
+      shell: 'bg-[#f8f7ff] text-[#0f0a1e]',
+      panel: 'border border-[#ddd6f5] bg-white',
+      side: 'border border-[#ddd6f5] bg-[#f0ebff]',
+      muted: 'text-[#5a4e7a]',
+      action: 'bg-gradient-to-r from-[#5628B4] to-[#D80E70] text-white hover:opacity-90',
       icon: FileText,
-      title: 'Sign in to your publication workspace',
-      body: 'Draft, review, and publish long-form work with the calmer reading system intact.',
+      title: 'Sign in to your press workspace',
+      body: 'Manage your press releases, distribution settings, and media contacts from one professional dashboard.',
     }
   }
   if (kind === 'visual') {
