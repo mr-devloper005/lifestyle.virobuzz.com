@@ -1,89 +1,99 @@
 import Link from 'next/link'
-import { Facebook, Linkedin, Twitter, Youtube } from 'lucide-react'
+import { FileText, ArrowRight } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { siteContent } from '@/config/site.content'
+import { fetchTaskPosts } from '@/lib/task-data'
+import { CATEGORY_OPTIONS, normalizeCategory } from '@/lib/categories'
 
 export const FOOTER_OVERRIDE_ENABLED = true
 
-const col = {
-  product: 'Product',
-  company: 'Company',
-  resources: 'Resources',
-  legal: 'Legal',
-} as const
-
-const links = {
-  product: [
-    { name: 'Press media archive', href: '/updates' },
-    { name: 'Search', href: '/search' },
-  ],
-  company: [
-    { name: 'About us', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Press room', href: '/press' },
-  ],
-  resources: [
-    { name: 'Help', href: '/help' },
-  ],
-  legal: [
-    { name: 'Privacy', href: '/privacy' },
-    { name: 'Terms', href: '/terms' },
-  ],
-} as const
-
-const social = [
-  { name: 'Twitter / X', href: 'https://twitter.com', icon: Twitter },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
-  { name: 'Facebook', href: 'https://facebook.com', icon: Facebook },
-  { name: 'YouTube', href: 'https://youtube.com', icon: Youtube },
+const columns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Press releases', href: '/updates' },
+      { label: 'Submit a release', href: '/create/mediaDistribution' },
+      { label: 'Search', href: '/search' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Press room', href: '/press' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Privacy', href: '/privacy' },
+      { label: 'Terms', href: '/terms' },
+      { label: 'Cookies', href: '/cookies' },
+    ],
+  },
 ]
 
-export function FooterOverride() {
+const getCategoryLabel = (value: string) => {
+  const normalized = normalizeCategory(value)
+  return CATEGORY_OPTIONS.find((item) => item.slug === normalized)?.name || value
+}
+
+export async function FooterOverride() {
+  const primary = SITE_CONFIG.tasks.find((t) => t.enabled) || SITE_CONFIG.tasks[0]
+  const posts = await fetchTaskPosts('mediaDistribution', 200, { allowMockFallback: false })
+  const categories = Array.from(
+    new Map(
+      posts
+        .map((post) => {
+          const content = post.content && typeof post.content === 'object' ? (post.content as Record<string, unknown>) : {}
+          const raw = typeof content.category === 'string' ? content.category.trim() : ''
+          if (!raw) return null
+          const slug = normalizeCategory(raw)
+          return {
+            slug,
+            name: getCategoryLabel(raw),
+          }
+        })
+        .filter((item): item is { slug: string; name: string } => Boolean(item))
+        .map((item) => [item.slug, item])
+    ).values()
+  ).slice(0, 8)
+
   return (
-    <footer className="border-t border-[#2a0d28] bg-gradient-to-b from-[#2f0b2c] to-[#1a0618] text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
-          <div className="lg:col-span-2">
+    <footer className="border-t border-white/10 bg-[linear-gradient(180deg,#04004a_0%,#1c045d_48%,#0f0238_100%)] text-white">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
+          <div>
             <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#D91656] to-[#640D5F] text-sm font-bold">
-                {SITE_CONFIG.name.slice(0, 1)}
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/10">
+                <span className="font-[family-name:var(--font-display)] text-xl font-semibold text-[#f3c5ff]">{SITE_CONFIG.name.slice(0, 1).toLowerCase()}</span>
               </span>
               <div>
-                <p className="text-base font-semibold leading-tight">{SITE_CONFIG.name}</p>
-                <p className="text-xs text-white/65">{siteContent.footer.tagline}</p>
+                <p className="font-[family-name:var(--font-display)] text-xl font-semibold">{SITE_CONFIG.name}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#f3c5ff]/80">{siteContent.footer.tagline}</p>
               </div>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">{SITE_CONFIG.description}</p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {social.map((s) => (
-                <a
-                  key={s.name}
-                  href={s.href}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:border-[#FFB200] hover:text-[#FFB200]"
-                  aria-label={s.name}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <s.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/65">{SITE_CONFIG.description}</p>
+            {primary ? (
+              <Link
+                href={primary.route}
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#f3c5ff] px-4 py-2.5 text-sm font-semibold text-[#04004a] transition hover:bg-white"
+              >
+                <FileText className="h-4 w-4" />
+                Browse {primary.label}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            ) : null}
           </div>
-          {(
-            [
-              [col.product, links.product],
-              [col.company, links.company],
-              [col.resources, links.resources],
-              [col.legal, links.legal],
-            ] as const
-          ).map(([title, items]) => (
-            <div key={title}>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FFB200]/90">{title}</p>
-              <ul className="mt-4 space-y-2.5 text-sm">
-                {items.map((item) => (
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f3c5ff]/75">{col.title}</h3>
+              <ul className="mt-5 space-y-3 text-sm">
+                {col.links.map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} className="text-white/75 transition hover:text-white">
-                      {item.name}
+                      {item.label}
                     </Link>
                   </li>
                 ))}
@@ -91,9 +101,39 @@ export function FooterOverride() {
             </div>
           ))}
         </div>
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/60 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
-          <p className="text-white/50">A press distribution experience built on the shared publishing engine.</p>
+
+        {categories.length ? (
+          <div className="mt-10 border-t border-white/10 pt-8">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f3c5ff]/75">Categories</h3>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/updates?category=${category.slug}`}
+                  className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80 transition hover:border-[#f3c5ff]/60 hover:bg-white/10 hover:text-white"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/privacy" className="hover:text-white/80">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white/80">
+              Terms
+            </Link>
+            <Link href="/contact" className="hover:text-white/80">
+              Support
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
