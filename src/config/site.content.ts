@@ -2,62 +2,63 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Press media distribution & newswire',
+    tagline: 'Global press release distribution & media wire',
   },
   footer: {
-    tagline: 'Wire-grade reach for teams that ship news on a schedule.',
+    tagline: 'Connecting your story to the journalists who matter.',
   },
   hero: {
     badge: 'Press wire',
-    title: ['Press Release Distribution Since 2004'],
+    title: ['Amplify Your Story. Reach Every Newsroom.'],
     description:
-      'Daily Trend Press helps organizations publish announcements with a clear archive, readable story pages, and distribution flows built for busy communications teams.',
+      'Virobuzz Media delivers your press releases to thousands of journalists, editors, and media outlets worldwide — with professional formatting, instant distribution, and real-time analytics.',
     primaryCta: {
-      label: 'Sign Up',
+      label: 'Distribute Now',
       href: '/register',
     },
     secondaryCta: {
       label: 'View Pricing',
       href: '/pricing',
     },
-    searchPlaceholder: 'Search press media',
-    focusLabel: 'Latest wire',
-    featureCardBadge: 'Why teams stay',
-    featureCardTitle: 'One home for press media, and reader trust.',
+    searchPlaceholder: 'Search press releases',
+    focusLabel: 'Latest releases',
+    featureCardBadge: 'Why brands choose us',
+    featureCardTitle: 'One platform for press releases, media reach, and journalist trust.',
     featureCardDescription:
-      'The homepage highlights your latest wire items, trust markers, and direct paths to plans so nothing gets lost in a generic blog layout.',
+      'From startup launches to enterprise announcements — Virobuzz Media gives every release a professional home with wire-grade distribution.',
   },
   home: {
     metadata: {
-      title: 'Daily Trend Press — press media distribution & newswire',
+      title: 'Virobuzz Media — Press Release Distribution & Media Wire',
       description:
-        'Distribute press media with a professional newswire experience: clear story pages, and an archive built for scanning.',
-      openGraphTitle: 'Daily Trend Press — press media distribution',
+        'Distribute press releases with professional wire-grade reach: instant newsroom delivery, structured archives, and analytics built for communications teams.',
+      openGraphTitle: 'Virobuzz Media — Press Release Distribution',
       openGraphDescription:
-        'Publish announcements with wire-style presentation, structured archives, and pricing that stays easy to compare.',
+        'Publish announcements with wire-style presentation, global media reach, and pricing that scales with your team.',
       keywords: [
         'press release distribution',
+        'media wire',
         'newswire',
+        'PR distribution',
         'media announcements',
-        'PR wire',
-        'company news',
-        'Daily Trend Press',
+        'press release service',
+        'Virobuzz Media',
       ],
     },
-    introBadge: 'Newswire',
-    introTitle: 'Built for communications that need both speed and polish.',
+    introBadge: 'Media Wire',
+    introTitle: 'Built for communications teams that need speed, reach, and polish.',
     introParagraphs: [
-      'Daily Trend Press is tuned for teams that publish often: press media stays easy to find, detail pages read like a professional wire, and the archive supports category and search without feeling like a generic template.',
-      'We keep the interface light so your stories stay in focus, while structure underneath stays compatible with the wider publishing system.',
+      'Virobuzz Media is engineered for organizations that publish press releases regularly: every release gets a professional detail page, a searchable archive, and distribution flows that reach the right journalists at the right time.',
+      'We keep the interface clean so your stories stay front and center, while the infrastructure underneath handles syndication, SEO, and media partner delivery automatically.',
     ],
     sideBadge: 'What you get',
     sidePoints: [
-      'A homepage that sells distribution, not blog noise.',
-      'Archive pages with category filters and search hand-off.',
-      'Detail pages with share tools and related reading.',
+      'Instant distribution to thousands of media contacts.',
+      'Professional release pages with share tools and SEO.',
+      'Searchable archive with category filters and analytics.',
     ],
     primaryLink: {
-      label: 'Browse the wire',
+      label: 'Browse press releases',
       href: '/news',
     },
     secondaryLink: {
@@ -66,21 +67,21 @@ export const siteContent = {
     },
   },
   cta: {
-    badge: 'Ready when you are',
-    title: 'Need a calmer way to ship announcements at volume?',
+    badge: 'Ready to distribute',
+    title: 'Get your next press release in front of the right journalists.',
     description:
-      'Start with a plan, publish through the same routes you already use, and keep the reading experience consistent end to end.',
+      'Start distributing in minutes. Choose a plan, upload your release, and let Virobuzz Media handle the rest — from formatting to delivery.',
     primaryCta: {
       label: 'View plans',
       href: '/pricing',
     },
     secondaryCta: {
-      label: 'Read latest press media',
+      label: 'Read latest releases',
       href: '/news',
     },
   },
-  taskSectionHeading: 'Latest press media',
-  taskSectionDescriptionSuffix: 'Fresh items from the wire, updated as your team publishes.',
+  taskSectionHeading: 'Latest press releases',
+  taskSectionDescriptionSuffix: 'Fresh releases from the wire, updated as organizations publish.',
 } as const
 
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {
@@ -113,8 +114,8 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'Open PDFs and downloadable files.',
   },
   mediaDistribution: {
-    title: 'Press media archive',
-    description: 'Scan the latest newswire posts with filters, search, and full release pages.',
+    title: 'Press release archive',
+    description: 'Browse every press release with category filters, search, and full release pages.',
   },
 }
 
@@ -133,10 +134,10 @@ export const taskIntroCopy: Record<
   comment: { title: 'Comments', paragraphs: ['Commentary and response posts.'], links: [{ label: 'Home', href: '/' }] },
   org: { title: 'Organizations', paragraphs: ['Organization pages and entities.'], links: [{ label: 'Home', href: '/' }] },
   mediaDistribution: {
-    title: 'Press media archive',
+    title: 'Press release archive',
     paragraphs: [
-      'Browse every live announcement in one place. Use category filters to jump between topics, or open search for keyword-wide discovery across the full wire.',
-      'Each item opens to a full release view with clear headline hierarchy, share actions, and related items so readers can keep moving without hitting dead ends.',
+      'Browse every live press release in one place. Use category filters to jump between industries, or open search for keyword discovery across the full wire.',
+      'Each release opens to a full professional page with clear headline hierarchy, share actions, and related releases so journalists and readers can keep moving without hitting dead ends.',
     ],
     links: [
       { label: 'Home', href: '/' },

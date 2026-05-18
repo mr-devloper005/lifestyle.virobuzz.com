@@ -1,10 +1,10 @@
 export const siteIdentity = {
   code: process.env.NEXT_PUBLIC_SITE_CODE || 'mg6jugdq2l',
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Lifestyle Virobuzz',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Independent media updates',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Virobuzz Media',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Press releases & media distribution',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
-    'A media-distribution newsroom for announcements, coverage, and press updates on Lifestyle Virobuzz.',
+    'Virobuzz Media is a professional press release distribution platform delivering your announcements to journalists, editors, and media partners worldwide.',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'lifestyle.virobuzz.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://lifestyle.virobuzz.com',
   ogImage: process.env.NEXT_PUBLIC_SITE_OG_IMAGE || '/og-default.png',

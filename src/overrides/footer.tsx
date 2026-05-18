@@ -15,7 +15,7 @@ const getCategoryLabel = (value: string) => {
 
 
 const col = {
-  product: 'Product',
+  product: 'Distribution',
   company: 'Company',
   resources: 'Resources',
   legal: 'Legal',
@@ -23,8 +23,8 @@ const col = {
 
 const links = {
   product: [
-    { name: 'Press media archive', href: '/updates' },
-    { name: 'Search', href: '/search' },
+    { name: 'Press release archive', href: '/updates' },
+    { name: 'Search releases', href: '/search' },
   ],
   company: [
     { name: 'About us', href: '/about' },
@@ -32,11 +32,12 @@ const links = {
     { name: 'Press room', href: '/press' },
   ],
   resources: [
-    { name: 'Help', href: '/help' },
+    { name: 'Help center', href: '/help' },
+    { name: 'Writing guide', href: '/help' },
   ],
   legal: [
-    { name: 'Privacy', href: '/privacy' },
-    { name: 'Terms', href: '/terms' },
+    { name: 'Privacy policy', href: '/privacy' },
+    { name: 'Terms of service', href: '/terms' },
   ],
 } as const
 
@@ -65,26 +66,31 @@ export async function FooterOverride() {
   ).slice(0, 8)
 
   return (
-    <footer className="border-t border-[#2a0d28] bg-gradient-to-b from-[#2f0b2c] to-[#1a0618] text-white">
+    <footer className="border-t border-[#2a1a5e] bg-gradient-to-b from-[#1a0f3e] to-[#0d0820] text-white">
+      {/* Top accent line */}
+      <div className="h-1 w-full bg-gradient-to-r from-[#5628B4] via-[#D80E70] to-[#E7455F]" />
+
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
+          {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#D91656] to-[#640D5F] text-sm font-bold">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#5628B4] to-[#D80E70] text-sm font-black shadow-lg shadow-[#5628B4]/30">
                 {SITE_CONFIG.name.slice(0, 1)}
               </span>
               <div>
-                <p className="text-base font-semibold leading-tight">{SITE_CONFIG.name}</p>
-                <p className="text-xs text-white/65">{siteContent.footer.tagline}</p>
+                <p className="text-base font-bold leading-tight">{SITE_CONFIG.name}</p>
+                <p className="text-xs text-white/60">Press Release Wire</p>
               </div>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">{SITE_CONFIG.description}</p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/65">{siteContent.footer.tagline}</p>
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/50">{SITE_CONFIG.description}</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {social.map((s) => (
                 <a
                   key={s.name}
                   href={s.href}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:border-[#FFB200] hover:text-[#FFB200]"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:border-[#F7B236] hover:bg-[#F7B236]/10 hover:text-[#F7B236]"
                   aria-label={s.name}
                   target="_blank"
                   rel="noreferrer"
@@ -94,6 +100,8 @@ export async function FooterOverride() {
               ))}
             </div>
           </div>
+
+          {/* Link columns */}
           {(
             [
               [col.product, links.product],
@@ -103,11 +111,11 @@ export async function FooterOverride() {
             ] as const
           ).map(([title, items]) => (
             <div key={title}>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FFB200]/90">{title}</p>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#F7B236]/90">{title}</p>
               <ul className="mt-4 space-y-2.5 text-sm">
                 {items.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-white/75 transition hover:text-white">
+                  <li key={`${title}-${item.name}`}>
+                    <Link href={item.href} className="text-white/65 transition hover:text-white">
                       {item.name}
                     </Link>
                   </li>
@@ -136,7 +144,7 @@ export async function FooterOverride() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/60 sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
-          <p className="text-white/50">A press distribution experience built on the shared publishing engine.</p>
+          <p className="text-white/35">Professional press release distribution powered by Virobuzz Media.</p>
         </div>
       </div>
     </footer>

@@ -71,6 +71,21 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
     : ''
 
   return (
+    <div className="min-h-screen bg-[#f8f7ff] text-[#0f0a1e]">
+      <NavbarShell />
+      <SchemaJsonLd data={articleSchema} />
+      <article>
+        <header className="border-b border-[#ddd6f5] bg-gradient-to-b from-white to-[#f0ebff]">
+          <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#5628B4] to-[#D80E70] px-3 py-1 text-[10px] font-black uppercase tracking-wider text-white">
+              {catLabel}
+            </div>
+            <h1 className="mt-5 text-3xl font-bold leading-tight tracking-[-0.03em] sm:text-4xl lg:text-[2.4rem]">{post.title}</h1>
+            <p className="mt-4 text-lg leading-relaxed text-[#5a4e7a] sm:text-xl">{subtitle}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-[#5a4e7a]">
+              <span>By {author}</span>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-2">
     <div className="min-h-screen bg-white text-foreground">
       <NavbarShell />
 

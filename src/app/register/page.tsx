@@ -21,14 +21,14 @@ function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
   }
   if (kind === 'editorial') {
     return {
-      shell: 'bg-[#F8F8F8] text-[#333333]',
-      panel: 'border border-[#D8BFD8] bg-white',
-      side: 'border border-[#D8BFD8] bg-[#F8F8F8]',
-      muted: 'text-[#666666]',
-      action: 'bg-[#6A006A] text-white hover:bg-[#8B008B]',
+      shell: 'bg-[#f8f7ff] text-[#0f0a1e]',
+      panel: 'border border-[#ddd6f5] bg-white',
+      side: 'border border-[#ddd6f5] bg-[#f0ebff]',
+      muted: 'text-[#5a4e7a]',
+      action: 'bg-gradient-to-r from-[#5628B4] to-[#D80E70] text-white hover:opacity-90',
       icon: FileText,
-      title: 'Start your contributor workspace',
-      body: 'Create a profile for essays, issue drafts, editorial review, and publication scheduling.',
+      title: 'Start distributing press releases',
+      body: 'Create your account to submit releases, track media pickups, and reach thousands of journalists worldwide.',
     }
   }
   if (kind === 'visual') {
