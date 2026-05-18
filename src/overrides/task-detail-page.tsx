@@ -90,18 +90,18 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
   }
 
   return (
-    <div className="min-h-screen bg-[#fffcf7] text-[#1a0f18]">
+    <div className="min-h-screen bg-[#f8f7ff] text-[#0f0a1e]">
       <NavbarShell />
       <SchemaJsonLd data={articleSchema} />
       <article>
-        <header className="border-b border-[#ead8cc] bg-gradient-to-b from-white to-[#fff5eb]">
+        <header className="border-b border-[#ddd6f5] bg-gradient-to-b from-white to-[#f0ebff]">
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#640D5F] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#5628B4] to-[#D80E70] px-3 py-1 text-[10px] font-black uppercase tracking-wider text-white">
               {catLabel}
             </div>
-            <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.03em] sm:text-4xl lg:text-[2.4rem]">{post.title}</h1>
-            <p className="mt-4 text-lg leading-relaxed text-[#5c4a52] sm:text-xl">{subtitle}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-[#5c4a52]">
+            <h1 className="mt-5 text-3xl font-bold leading-tight tracking-[-0.03em] sm:text-4xl lg:text-[2.4rem]">{post.title}</h1>
+            <p className="mt-4 text-lg leading-relaxed text-[#5a4e7a] sm:text-xl">{subtitle}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-[#5a4e7a]">
               <span>By {author}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-2">
@@ -109,7 +109,7 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
                 href={share.x}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#ead8cc] bg-white px-3 py-1.5 text-xs font-semibold text-[#1a0f18] transition hover:border-[#D91656] hover:text-[#D91656]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#ddd6f5] bg-white px-3 py-1.5 text-xs font-bold text-[#0f0a1e] transition hover:border-[#5628B4] hover:text-[#5628B4]"
               >
                 <Twitter className="h-3.5 w-3.5" />
                 X / Twitter
@@ -118,7 +118,7 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
                 href={share.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#ead8cc] bg-white px-3 py-1.5 text-xs font-semibold text-[#1a0f18] transition hover:border-[#0a66c2] hover:text-[#0a66c2]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#ddd6f5] bg-white px-3 py-1.5 text-xs font-bold text-[#0f0a1e] transition hover:border-[#0a66c2] hover:text-[#0a66c2]"
               >
                 <Linkedin className="h-3.5 w-3.5" />
                 LinkedIn
@@ -127,14 +127,14 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
                 href={share.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#ead8cc] bg-white px-3 py-1.5 text-xs font-semibold text-[#1a0f18] transition hover:border-[#1877f2] hover:text-[#1877f2]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#ddd6f5] bg-white px-3 py-1.5 text-xs font-bold text-[#0f0a1e] transition hover:border-[#1877f2] hover:text-[#1877f2]"
               >
                 <Facebook className="h-3.5 w-3.5" />
                 Facebook
               </a>
               <a
                 href={pageUrl}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#FFB200]/50 bg-[#fff8e8] px-3 py-1.5 text-xs font-semibold text-[#6b4500]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#F7B236]/50 bg-[#fff8ec] px-3 py-1.5 text-xs font-bold text-[#7a4a00]"
               >
                 <Share2 className="h-3.5 w-3.5" />
                 Permalink
@@ -144,7 +144,7 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
         </header>
 
         {images[0] && (
-          <div className="border-b border-[#ead8cc] bg-white">
+          <div className="border-b border-[#ddd6f5] bg-white">
             <div className="relative mx-auto aspect-[16/7] w-full max-w-5xl overflow-hidden sm:aspect-[21/9]">
               <ContentImage
                 src={images[0]}
@@ -161,17 +161,17 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
         )}
 
         <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
-          <div className="prose prose-lg max-w-none article-content text-[#2d2326]">
+          <div className="prose prose-lg max-w-none article-content text-[#1a1030]">
             <RichContent html={html} />
           </div>
         </div>
 
         {related.length > 0 && (
-          <section className="border-t border-[#ead8cc] bg-white/90 py-12">
+          <section className="border-t border-[#ddd6f5] bg-white/90 py-12">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <div className="mb-6 flex items-end justify-between gap-3">
-                <h2 className="text-lg font-semibold sm:text-xl">More from the wire</h2>
-                <Link href="/updates" className="text-sm font-medium text-[#D91656] hover:underline">
+                <h2 className="text-lg font-bold sm:text-xl">More press releases</h2>
+                <Link href="/updates" className="text-sm font-bold text-[#D80E70] hover:underline">
                   View all
                 </Link>
               </div>
@@ -184,11 +184,14 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
           </section>
         )}
 
-        <div className="bg-gradient-to-r from-[#640D5F] to-[#D91656] py-10 text-center sm:py-12">
-          <p className="px-4 text-base font-medium text-white sm:text-lg">Wish your news had this kind of reach?</p>
+        <div className="relative overflow-hidden bg-gradient-to-r from-[#5628B4] via-[#8b3fd4] to-[#D80E70] py-10 text-center sm:py-12">
+          <p className="px-4 text-base font-bold text-white sm:text-lg">Ready to distribute your next press release?</p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/register" className="inline-flex rounded-full bg-white px-6 py-2.5 text-sm font-bold text-[#7a1038] shadow">
-              Sign up
+            <Link href="/register" className="inline-flex rounded-full bg-white px-6 py-2.5 text-sm font-black text-[#5628B4] shadow-lg transition hover:bg-[#f0ebff]">
+              Get started free
+            </Link>
+            <Link href="/updates" className="inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20">
+              Browse releases
             </Link>
           </div>
         </div>

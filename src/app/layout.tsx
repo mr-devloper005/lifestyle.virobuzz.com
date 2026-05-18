@@ -22,9 +22,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+        <link rel="icon" href="/favicon.png?v=2" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png?v=2" />
         {googleFontsHref ? <link rel="stylesheet" href={googleFontsHref} /> : null}
       </head>
       <body
